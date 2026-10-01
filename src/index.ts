@@ -301,9 +301,9 @@ export function parseVisualDSL(source:string):VisualScene {
       }
     } else if(cmd==="RECT" || cmd==="CIRCLE" || cmd==="LINE" || cmd==="ARROW"){
       const p=args.split(/\s+/).map(Number);
-      if(cmd==="RECT" && p.length>=4) nodes.push({id:"dsl-"+idx++,type:"rect",x:p[0],y:p[1],width:p[2],height:p[3],rx:12,paint:{fill:"#e0e7ff",stroke:"#4338ca",strokeWidth:2}});
-      else if(cmd==="CIRCLE" && p.length>=3) nodes.push({id:"dsl-"+idx++,type:"circle",cx:p[0],cy:p[1],r:p[2],paint:{fill:"#dbeafe",stroke:"#1d4ed8",strokeWidth:2}});
-      else if(p.length>=4) nodes.push({id:"dsl-"+idx++,type:"line",x1:p[0],y1:p[1],x2:p[2],y2:p[3],markerEnd:cmd==="ARROW",paint:{stroke:"#111827",strokeWidth:2}});
+      if(cmd==="RECT" && p.length>=4) nodes.push({id:"dsl-"+idx++,type:"rect",x:Number(p[0]),y:Number(p[1]),width:Number(p[2]),height:Number(p[3]),rx:12,paint:{fill:"#e0e7ff",stroke:"#4338ca",strokeWidth:2}});
+      else if(cmd==="CIRCLE" && p.length>=3) nodes.push({id:"dsl-"+idx++,type:"circle",cx:Number(p[0]),cy:Number(p[1]),r:Number(p[2]),paint:{fill:"#dbeafe",stroke:"#1d4ed8",strokeWidth:2}});
+      else if(p.length>=4) nodes.push({id:"dsl-"+idx++,type:"line",x1:Number(p[0]),y1:Number(p[1]),x2:Number(p[2]),y2:Number(p[3]),markerEnd:cmd==="ARROW",paint:{stroke:"#111827",strokeWidth:2}});
     }
   });
   return createScene({id:"dsl-scene",width:width,height:height,background:background,title:title,nodes:nodes});
@@ -335,3 +335,5 @@ export async function loadCanvasKit(locateFile?:(file:string)=>string):Promise<a
 }
 export async function loadThreeWebGPU():Promise<any> {return import("three/webgpu");}
 export async function yogaLayoutAvailable():Promise<boolean> {try{await import("yoga-layout");return true;}catch{return false;}}
+
+export { latexToSvg, hydrateMath } from "./mathjax.js";
