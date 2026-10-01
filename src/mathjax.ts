@@ -18,7 +18,10 @@ async function mathjaxInstance(): Promise<any> {
 export async function latexToSvg(latex:string, display=true):Promise<string> {
   const MathJax = await mathjaxInstance();
   const node = await MathJax.tex2svgPromise(String(latex), { display });
-  return MathJax.startup.adaptor.serializeXML(node);
+  const serialized = MathJax.startup.adaptor.serializeXML(node);
+  const start = serialized.indexOf("<svg");
+  const end = serialized.lastIndexOf("</svg>");
+  return start >= 0 && end >= start ? serialized.slice(start, end + 6) : serialized;
 }
 
 async function hydrateNode(node:VisualNode):Promise<VisualNode> {
