@@ -36,8 +36,8 @@ const CAPABILITIES: VisualCapability[] = [
   { id:"canvaskit", category:"renderer", status:"beta", runtime:["browser"], deterministic:true, offline:true, description:"Skia/WebAssembly accelerated browser renderer.", package:"canvaskit-wasm" },
   { id:"yoga-layout", category:"layout", status:"beta", runtime:["browser","node"], deterministic:true, offline:true, description:"Constraint/flexbox layout adapter.", package:"yoga-layout" },
   { id:"three-webgpu", category:"3d", status:"experimental", runtime:["browser"], deterministic:true, offline:true, description:"WebGPU 3D/technical renderer with WebGL2 fallback.", package:"three" },
-  { id:"harfbuzz-shaping", category:"text", status:"experimental", runtime:["browser","node"], deterministic:true, offline:true, description:"Advanced glyph shaping and multilingual typography." },
-  { id:"opentype-paths", category:"text", status:"planned", runtime:["browser","node"], deterministic:true, offline:true, description:"Font glyph outline extraction for editable vector text." },
+  { id:"harfbuzz-shaping", category:"text", status:"beta", runtime:["browser","node"], deterministic:true, offline:true, description:"Advanced glyph shaping and multilingual typography." },
+  { id:"opentype-paths", category:"text", status:"beta", runtime:["browser","node"], deterministic:true, offline:true, description:"Font glyph outline extraction for editable vector text." },
   { id:"pdf-export", category:"export", status:"planned", runtime:["node"], deterministic:true, offline:true, description:"Vector-first PDF export preserving text and paths where possible." },
   { id:"quality-engine", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Rule-based diagnostics, layout checks and visual metrics." }
 ];
