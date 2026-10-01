@@ -319,3 +319,10 @@ export class VisualEngine {
 export const visualEngine=new VisualEngine();
 
 export { findNode, updateNode, removeNode, addNode, reorderNode, snapValue, snapPoint, SceneHistory } from "./document.js";
+
+export * from "./capabilities.js";
+export * from "./extensions.js";
+export * from "./pipeline.js";
+
+export * from "./backend.js";
+export * from "./procedural.js";
