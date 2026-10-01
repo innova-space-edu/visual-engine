@@ -23,6 +23,10 @@ export interface VisualCapability {
 }
 
 const CAPABILITIES: VisualCapability[] = [
+  { id:"learning-optimizer", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Evidence-weighted parameter recommendations and candidate generation." },
+  { id:"visual-regression", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Current-versus-candidate regression comparison with quality, semantic, overflow, failure and performance gates." },
+  { id:"visual-experiment", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Deterministic UCB experiment selection and evidence-based winner detection." },
+  { id:"learning-telemetry", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Privacy-preserving structural scene summaries for learning telemetry." },
   { id:"editor-v4", category:"layout", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Multi-select alignment, distribution, grouping, smart snapping and scene diffs." },
   { id:"document-pages", category:"layout", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Multi-page VisualDocument contract and page operations." },
   { id:"learning-v2", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Learns numeric edit preferences and acceptance rankings from scene changes." },

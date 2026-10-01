@@ -346,3 +346,8 @@ export * from "./animation.js";
 export * from "./editor.js";
 export * from "./learning-v2.js";
 export * from "./content.js";
+
+export * from "./optimizer.js";
+export * from "./regression.js";
+export * from "./experiment.js";
+export * from "./telemetry.js";
