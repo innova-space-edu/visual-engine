@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   wrapText, fitText, gridLayout, homothety, lineIntersection,
-  barChart, molecule, analyzeAdvancedQuality, createScene
+  barChart, molecule, analyzeAdvancedQuality, createScene, VisualLearningEngine, candidateKey, sceneBundle
 } from "../dist/index.js";
 
 test("text wraps and fits deterministically",()=>{
@@ -28,4 +28,17 @@ test("charts science and advanced quality produce scene nodes",()=>{
   const scene=createScene({id:"v2",width:400,height:400,nodes});
   const quality=analyzeAdvancedQuality(scene);
   assert.ok(quality.score>=0&&quality.score<=100);
+});
+
+test("learning engine ranks deterministic candidates and exports bundles",()=>{
+  const learning=new VisualLearningEngine();
+  const good=candidateKey({skill:"education.infographic",layout:"grid-3"});
+  const weak=candidateKey({skill:"education.infographic",layout:"grid-2"});
+  for(let i=0;i<12;i++)learning.record({key:good,accepted:true,quality:94,edits:1,renderMs:20});
+  for(let i=0;i<12;i++)learning.record({key:weak,accepted:i<4,quality:72,edits:5,renderMs:30});
+  assert.equal(learning.choose([weak,good]),good);
+  const scene=createScene({id:"bundle",width:100,height:100,nodes:[]});
+  const bundle=sceneBundle(scene);
+  assert.match(bundle.svg,/^<svg/);
+  assert.match(bundle.scene,/"id": "bundle"/);
 });
