@@ -138,3 +138,5 @@ export async function renderThreeScene(canvas:HTMLCanvasElement,definition:Visua
     }
   };
 }
+
+export { VisualWorkerClient, offscreenCanvasAvailable } from "./worker.js";
