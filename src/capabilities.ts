@@ -1,0 +1,53 @@
+export type CapabilityStatus = "stable" | "beta" | "experimental" | "planned";
+
+export interface VisualCapability {
+  id: string;
+  category:
+    | "renderer"
+    | "layout"
+    | "text"
+    | "math"
+    | "vector"
+    | "raster"
+    | "3d"
+    | "animation"
+    | "export"
+    | "quality"
+    | "interop";
+  status: CapabilityStatus;
+  runtime: Array<"core" | "browser" | "node" | "python">;
+  deterministic: boolean;
+  offline: boolean;
+  description: string;
+  package?: string;
+}
+
+const CAPABILITIES: VisualCapability[] = [
+  { id:"scene-graph", category:"vector", status:"stable", runtime:["core","browser","node","python"], deterministic:true, offline:true, description:"Canonical editable VisualScene representation." },
+  { id:"svg-renderer", category:"renderer", status:"stable", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Deterministic SVG renderer." },
+  { id:"resvg", category:"raster", status:"stable", runtime:["node"], deterministic:true, offline:true, description:"Server-side SVG to PNG rasterization.", package:"@resvg/resvg-js" },
+  { id:"mathjax-svg", category:"math", status:"stable", runtime:["node"], deterministic:true, offline:true, description:"TeX/LaTeX to structured SVG.", package:"mathjax" },
+  { id:"canvaskit", category:"renderer", status:"beta", runtime:["browser"], deterministic:true, offline:true, description:"Skia/WebAssembly accelerated browser renderer.", package:"canvaskit-wasm" },
+  { id:"yoga-layout", category:"layout", status:"beta", runtime:["browser","node"], deterministic:true, offline:true, description:"Constraint/flexbox layout adapter.", package:"yoga-layout" },
+  { id:"three-webgpu", category:"3d", status:"experimental", runtime:["browser"], deterministic:true, offline:true, description:"WebGPU 3D/technical renderer with WebGL2 fallback.", package:"three" },
+  { id:"harfbuzz-shaping", category:"text", status:"planned", runtime:["browser","node"], deterministic:true, offline:true, description:"Advanced glyph shaping and multilingual typography." },
+  { id:"opentype-paths", category:"text", status:"planned", runtime:["browser","node"], deterministic:true, offline:true, description:"Font glyph outline extraction for editable vector text." },
+  { id:"pdf-export", category:"export", status:"planned", runtime:["node"], deterministic:true, offline:true, description:"Vector-first PDF export preserving text and paths where possible." },
+  { id:"quality-engine", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Rule-based diagnostics, layout checks and visual metrics." }
+];
+
+export function listCapabilities(): VisualCapability[] {
+  return CAPABILITIES.map((cap) => ({...cap, runtime:[...cap.runtime]}));
+}
+
+export function getCapability(id:string): VisualCapability | undefined {
+  const found=CAPABILITIES.find((cap)=>cap.id===id);
+  return found ? {...found, runtime:[...found.runtime]} : undefined;
+}
+
+export function capabilityMatrix(){
+  return CAPABILITIES.reduce<Record<string,VisualCapability>>((acc,cap)=>{
+    acc[cap.id]={...cap,runtime:[...cap.runtime]};
+    return acc;
+  },{});
+}
