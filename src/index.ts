@@ -58,7 +58,7 @@ export interface QualityReport {
   metrics:{nodeCount:number;hiddenCount:number;outOfBounds:number;duplicateIds:number};
 }
 export interface RenderResult {
-  format:"svg"|"png";
+  format:"svg"|"png"|"webp"|"avif"|"pdf";
   mimeType:string;
   data:string|Uint8Array;
   width:number;
