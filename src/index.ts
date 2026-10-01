@@ -342,3 +342,7 @@ export * from "./font.js";
 export * from "./scene3d.js";
 
 export * from "./animation.js";
+
+export * from "./editor.js";
+export * from "./learning-v2.js";
+export * from "./content.js";
