@@ -337,3 +337,5 @@ export async function loadThreeWebGPU():Promise<any> {return import("three/webgp
 export async function yogaLayoutAvailable():Promise<boolean> {try{await import("yoga-layout");return true;}catch{return false;}}
 
 export { latexToSvg, hydrateMath } from "./mathjax.js";
+
+export { findNode, updateNode, removeNode, addNode, reorderNode, snapValue, snapPoint, SceneHistory } from "./document.js";
