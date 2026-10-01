@@ -6,15 +6,25 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": { ".": "./dist/index.js" },
-  "files": ["dist", "schemas", "examples", "docs"],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "examples",
+    "docs"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "npm run build && node --test test/*.test.mjs",
-    "check": "npm run typecheck && npm run test"
+    "check": "npm run typecheck && npm run test",
+    "prepare": "npm run build"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "optionalDependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "canvaskit-wasm": "^0.40.0",
@@ -23,5 +33,7 @@
     "three": "^0.180.0",
     "yoga-layout": "^3.2.1"
   },
-  "devDependencies": { "typescript": "^5.9.2" }
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
 }
