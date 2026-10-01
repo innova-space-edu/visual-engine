@@ -336,3 +336,5 @@ export * from "./quality.js";
 
 export * from "./learning.js";
 export * from "./export.js";
+
+export * from "./font.js";
