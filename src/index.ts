@@ -315,27 +315,7 @@ export class VisualEngine {
     const q=analyzeQuality(scene);
     return {format:"svg",mimeType:"image/svg+xml",data:renderSvg(scene,!!opt.pretty),width:scene.width,height:scene.height,renderer:"visual-engine/svg-v1",diagnostics:q.diagnostics};
   }
-  async renderPng(scene:VisualScene,opt:{pixelRatio?:number}={}):Promise<RenderResult> {
-    const svg=this.renderSvg(scene);
-    try{
-      const mod:any=await import("@resvg/resvg-js");
-      const png=new mod.Resvg(svg.data as string,{fitTo:{mode:"zoom",value:opt.pixelRatio||1}}).render().asPng();
-      return Object.assign({},svg,{format:"png",mimeType:"image/png",data:png,renderer:"visual-engine/resvg"}) as RenderResult;
-    }catch(e){
-      return Object.assign({},svg,{diagnostics:svg.diagnostics.concat([{level:"warning",code:"resvg.unavailable",message:String(e)}])}) as RenderResult;
-    }
-  }
 }
 export const visualEngine=new VisualEngine();
-
-export async function loadCanvasKit(locateFile?:(file:string)=>string):Promise<any> {
-  const mod:any=await import("canvaskit-wasm");
-  const init=mod.default || mod;
-  return init({locateFile:locateFile});
-}
-export async function loadThreeWebGPU():Promise<any> {return import("three/webgpu");}
-export async function yogaLayoutAvailable():Promise<boolean> {try{await import("yoga-layout");return true;}catch{return false;}}
-
-export { latexToSvg, hydrateMath } from "./mathjax.js";
 
 export { findNode, updateNode, removeNode, addNode, reorderNode, snapValue, snapPoint, SceneHistory } from "./document.js";
