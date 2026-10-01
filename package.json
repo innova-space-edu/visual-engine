@@ -1,0 +1,27 @@
+{
+  "name": "@innova-space/visual-engine",
+  "version": "0.1.0",
+  "description": "Local-first deterministic visual rendering engine.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": "./dist/index.js" },
+  "files": ["dist", "schemas", "examples", "docs"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm run test"
+  },
+  "engines": { "node": ">=20" },
+  "optionalDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "canvaskit-wasm": "^0.40.0",
+    "mathjax-full": "^3.2.2",
+    "roughjs": "^4.6.6",
+    "three": "^0.180.0",
+    "yoga-layout": "^3.2.1"
+  },
+  "devDependencies": { "typescript": "^5.9.2" }
+}
