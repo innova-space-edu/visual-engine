@@ -23,6 +23,10 @@ export interface VisualCapability {
 }
 
 const CAPABILITIES: VisualCapability[] = [
+  { id:"editor-v4", category:"layout", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Multi-select alignment, distribution, grouping, smart snapping and scene diffs." },
+  { id:"document-pages", category:"layout", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Multi-page VisualDocument contract and page operations." },
+  { id:"learning-v2", category:"quality", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Learns numeric edit preferences and acceptance rankings from scene changes." },
+  { id:"rich-content", category:"text", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Rich text runs, tables, smart connectors, links and image adjustment metadata." },
   { id:"web-worker-runtime", category:"renderer", status:"beta", runtime:["browser"], deterministic:true, offline:true, description:"Scene rendering and quality analysis in a dedicated Web Worker." },
   { id:"offscreen-canvas", category:"renderer", status:"experimental", runtime:["browser"], deterministic:true, offline:true, description:"Off-main-thread canvas path for compatible browsers." },
   { id:"animation-timeline", category:"animation", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Keyframe interpolation and deterministic scene sampling." },
