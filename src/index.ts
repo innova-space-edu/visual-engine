@@ -226,8 +226,7 @@ function renderNode(n:VisualNode):string {
   }
   if(n.type==="math"){
     if(n.svg){
-      const body=n.svg.replace(/^<svg[^>]*>/i,"").replace(/<\/svg>\s*$/i,"");
-      return '<g '+a+' transform="translate('+n.x+" "+n.y+') scale('+(n.scale||1)+')" data-latex="'+esc(n.latex)+'">'+body+"</g>";
+      return '<g '+a+' transform="translate('+n.x+" "+n.y+') scale('+(n.scale||1)+')" data-latex="'+esc(n.latex)+'">'+n.svg+"</g>";
     }
     return '<text '+a+' x="'+n.x+'" y="'+n.y+'" font-family="STIX Two Math,Cambria Math,serif" font-size="24" data-latex="'+esc(n.latex)+'">'+esc(n.latex)+"</text>";
   }
