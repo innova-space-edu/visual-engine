@@ -33,7 +33,9 @@
     "three": "^0.180.0",
     "yoga-layout": "^3.2.1",
     "harfbuzzjs": "^1.6.2",
-    "opentype.js": "^2.0.0"
+    "opentype.js": "^2.0.0",
+    "sharp": "^0.35.5",
+    "pdf-lib": "^1.17.1"
   },
   "devDependencies": {
     "typescript": "^5.9.2"
