@@ -333,3 +333,6 @@ export * from "./geometry.js";
 export * from "./charts.js";
 export * from "./science.js";
 export * from "./quality.js";
+
+export * from "./learning.js";
+export * from "./export.js";
