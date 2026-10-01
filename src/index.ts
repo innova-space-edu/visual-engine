@@ -326,3 +326,17 @@ export * from "./pipeline.js";
 
 export * from "./backend.js";
 export * from "./procedural.js";
+
+export * from "./text.js";
+export * from "./layout.js";
+export * from "./geometry.js";
+export * from "./charts.js";
+export * from "./science.js";
+export * from "./quality.js";
+
+export * from "./learning.js";
+export * from "./export.js";
+
+export * from "./font.js";
+
+export * from "./scene3d.js";
