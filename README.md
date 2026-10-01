@@ -42,3 +42,13 @@ const result=visualEngine.renderSvg(scene);
 ```
 
 See `docs/ARCHITECTURE.md`, `docs/TECHNOLOGY_RADAR.md` and `python/README.md`.
+
+## Runtime entries
+
+The package intentionally separates environments:
+
+- `@innova-space/visual-engine` — browser-neutral core: Scene Graph, SVG, DSL, quality and document operations.
+- `@innova-space/visual-engine/browser` — browser accelerators such as self-hosted CanvasKit/Skia and Three.js WebGPU.
+- `@innova-space/visual-engine/node` — server-only MathJax 4 and resvg PNG rendering.
+
+This split prevents Node/native modules from leaking into client bundles and prevents browser/WASM assets from contaminating server-only builds.
