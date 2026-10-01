@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://innova-space-edu.github.io/visual-engine/schemas/scene.schema.json",
+  "title": "Visual Engine Scene",
+  "type": "object",
+  "required": ["version","id","width","height","nodes"],
+  "properties": {
+    "version": {"const":"1.0"},
+    "id": {"type":"string","minLength":1},
+    "width": {"type":"number","exclusiveMinimum":0},
+    "height": {"type":"number","exclusiveMinimum":0},
+    "background": {"type":"string"},
+    "nodes": {"type":"array","items":{"type":"object","required":["id","type"]}}
+  },
+  "additionalProperties": true
+}
