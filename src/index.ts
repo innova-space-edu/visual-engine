@@ -323,3 +323,6 @@ export { findNode, updateNode, removeNode, addNode, reorderNode, snapValue, snap
 export * from "./capabilities.js";
 export * from "./extensions.js";
 export * from "./pipeline.js";
+
+export * from "./backend.js";
+export * from "./procedural.js";
