@@ -23,6 +23,9 @@ export interface VisualCapability {
 }
 
 const CAPABILITIES: VisualCapability[] = [
+  { id:"web-worker-runtime", category:"renderer", status:"beta", runtime:["browser"], deterministic:true, offline:true, description:"Scene rendering and quality analysis in a dedicated Web Worker." },
+  { id:"offscreen-canvas", category:"renderer", status:"experimental", runtime:["browser"], deterministic:true, offline:true, description:"Off-main-thread canvas path for compatible browsers." },
+  { id:"animation-timeline", category:"animation", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Keyframe interpolation and deterministic scene sampling." },
   { id:"text-layout", category:"text", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Text measurement, wrapping and fit-to-box layout." },
   { id:"layout-v2", category:"layout", status:"beta", runtime:["core","browser","node"], deterministic:true, offline:true, description:"Grid, distribution and collision analysis." },
   { id:"geometry-v2", category:"vector", status:"beta", runtime:["core","browser","node","python"], deterministic:true, offline:true, description:"Analytic geometry and sampled function primitives." },
