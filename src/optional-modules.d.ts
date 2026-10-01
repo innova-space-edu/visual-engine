@@ -6,3 +6,6 @@ declare module "@resvg/resvg-js";
 
 declare module "opentype.js";
 declare module "harfbuzzjs";
+
+declare module "sharp";
+declare module "pdf-lib";
