@@ -1,13 +1,15 @@
 {
   "name": "@innova-space/visual-engine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local-first deterministic visual rendering engine.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./browser": "./dist/browser.js",
+    "./node": "./dist/node.js"
   },
   "files": [
     "dist",
