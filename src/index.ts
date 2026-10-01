@@ -338,3 +338,5 @@ export * from "./learning.js";
 export * from "./export.js";
 
 export * from "./font.js";
+
+export * from "./scene3d.js";
