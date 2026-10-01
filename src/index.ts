@@ -231,7 +231,8 @@ function renderNode(n:VisualNode):string {
     }
     return '<text '+a+' x="'+n.x+'" y="'+n.y+'" font-family="STIX Two Math,Cambria Math,serif" font-size="24" data-latex="'+esc(n.latex)+'">'+esc(n.latex)+"</text>";
   }
-  return '<image '+a+' x="'+n.x+'" y="'+n.y+'" width="'+n.width+'" height="'+n.height+'" href="'+esc(n.href)+'" preserveAspectRatio="'+(n.fit==="fill"?"none":n.fit==="cover"?"xMidYMid slice":"xMidYMid meet")+'"/>';
+  if(n.type==="image") return '<image '+a+' x="'+n.x+'" y="'+n.y+'" width="'+n.width+'" height="'+n.height+'" href="'+esc(n.href)+'" preserveAspectRatio="'+(n.fit==="fill"?"none":n.fit==="cover"?"xMidYMid slice":"xMidYMid meet")+'"/>';
+  return "";
 }
 
 export function renderSvg(scene:VisualScene,pretty=false):string {
@@ -296,8 +297,8 @@ export function parseVisualDSL(source:string):VisualScene {
     } else if(cmd==="TEXT" || cmd==="MATH"){
       const m=args.match(/^(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\s+(.+)$/);
       if(m){
-        if(cmd==="TEXT") nodes.push({id:"dsl-"+idx++,type:"text",x:Number(m[1]),y:Number(m[2]),text:unquote(m[3]),style:{family:"Inter,Arial,sans-serif",size:24},paint:{fill:"#111827"}});
-        else nodes.push({id:"dsl-"+idx++,type:"math",x:Number(m[1]),y:Number(m[2]),latex:unquote(m[3]),paint:{fill:"#111827"}});
+        if(cmd==="TEXT") nodes.push({id:"dsl-"+idx++,type:"text",x:Number(m[1]),y:Number(m[2]),text:unquote(m[3] ?? ""),style:{family:"Inter,Arial,sans-serif",size:24},paint:{fill:"#111827"}});
+        else nodes.push({id:"dsl-"+idx++,type:"math",x:Number(m[1]),y:Number(m[2]),latex:unquote(m[3] ?? ""),paint:{fill:"#111827"}});
       }
     } else if(cmd==="RECT" || cmd==="CIRCLE" || cmd==="LINE" || cmd==="ARROW"){
       const p=args.split(/\s+/).map(Number);
