@@ -340,3 +340,5 @@ export * from "./export.js";
 export * from "./font.js";
 
 export * from "./scene3d.js";
+
+export * from "./animation.js";
